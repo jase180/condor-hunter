@@ -12,7 +12,7 @@ from typing import List
 
 from condor_screener.data.loaders import load_options_from_csv, load_earnings_calendar
 from condor_screener.data.validators import filter_options, FilterConfig
-from condor_screener.builder.strategy import generate_iron_condors, StrategyConfig
+from condor_screener.builders.condor_builder import generate_iron_condors, StrategyConfig
 from condor_screener.analytics.analyzer import analyze_iron_condor
 from condor_screener.analytics.expected_move import calculate_expected_move
 from condor_screener.scoring.scorer import rank_analytics, ScoringConfig
@@ -184,12 +184,17 @@ if csv_file and st.sidebar.button("🚀 Run Screening", type="primary"):
 
     # Generate iron condors
     with st.spinner("Generating iron condor candidates..."):
+        # Convert target_delta and delta_tolerance to min/max delta
+        min_delta_val = max(0.05, target_delta - delta_tolerance)
+        max_delta_val = min(0.50, target_delta + delta_tolerance)
+
         strategy_config = StrategyConfig(
             min_dte=min_dte,
             max_dte=max_dte,
-            target_delta=target_delta,
-            delta_tolerance=delta_tolerance,
-            wing_width=wing_width,
+            min_delta=min_delta_val,
+            max_delta=max_delta_val,
+            wing_width_put=wing_width,
+            wing_width_call=wing_width,
         )
         candidates = list(generate_iron_condors(filtered, strategy_config))
         st.info(f"🎯 Generated {len(candidates)} iron condor candidates")
@@ -236,8 +241,7 @@ if csv_file and st.sidebar.button("🚀 Run Screening", type="primary"):
             weight_iv_rank=weight_iv_rank,
         )
 
-        scored = [score_analytics(a, scoring_config) for a in analytics_list]
-        ranked = rank_analytics(scored, scoring_config)
+        ranked = rank_analytics(analytics_list, scoring_config)
 
     st.success(f"✅ Screening complete! Found {len(ranked)} ranked candidates")
 

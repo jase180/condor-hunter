@@ -2,6 +2,7 @@
 
 ## Everything vibed with Claude with minimal edits so far to play around vibing ability and learn production Python
 
+> **🚀 NEW USER? [START HERE](START_HERE.md)** ← Complete beginner's guide with step-by-step instructions
 
 **Production-grade options screening platform** for iron condor and calendar spread strategies with interactive GUI, advanced analytics, and portfolio risk management.
 
