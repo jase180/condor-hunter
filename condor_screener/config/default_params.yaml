@@ -1,0 +1,35 @@
+# Default parameters for iron condor screening
+
+# Strategy constraints
+strategy:
+  min_dte: 30                    # Minimum days to expiration
+  max_dte: 45                    # Maximum days to expiration
+  min_delta: 0.15                # Minimum absolute delta for short legs
+  max_delta: 0.25                # Maximum absolute delta for short legs
+  wing_width_put: 5.0            # Put side wing width in dollars
+  wing_width_call: 5.0           # Call side wing width in dollars
+  allow_asymmetric: true         # Allow different wing widths
+
+# Hard filters (reject any candidate that fails these)
+filters:
+  min_iv_rank: 40.0              # Minimum IV rank (0-100)
+  min_iv_percentile: 40.0        # Minimum IV percentile (0-100)
+  max_bid_ask_spread_pct: 0.15   # Max bid-ask spread as % of mid (0.15 = 15%)
+  min_open_interest: 500         # Minimum open interest on short legs
+  min_volume: 1                  # Minimum volume on short legs
+  max_loss_cap: null             # Optional max loss cap (null = no cap)
+
+# Expected move calculation
+expected_move:
+  method: "straddle"             # "straddle" or "iv" or "both"
+  straddle_discount: 0.85        # Discount factor for straddle method
+
+# Volatility calculation
+volatility:
+  realized_vol_days: 20          # Days for realized volatility calculation
+  historical_iv_days: 252        # Days for IV rank/percentile calculation
+  use_garman_klass: true         # Use Garman-Klass estimator for RV
+
+# Ranking
+ranking:
+  top_n: 10                      # Number of top candidates to return

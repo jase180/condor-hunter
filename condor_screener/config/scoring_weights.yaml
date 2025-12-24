@@ -1,0 +1,19 @@
+# Scoring weights for ranking iron condors
+# All weights should sum to 1.0 for interpretability
+# Higher weights = more important in final score
+
+weights:
+  return_on_risk: 0.30           # Weight for ROR (higher ROR = better)
+  distance_from_em: 0.30         # Weight for distance outside expected move
+  liquidity: 0.20                # Weight for liquidity quality
+  iv_edge: 0.20                  # Weight for IV vs RV edge
+
+# Normalization ranges (for min-max scaling)
+# These are typical ranges; will be recalculated from actual candidate pool
+normalization:
+  ror_min: 10.0                  # Typical minimum ROR (%)
+  ror_max: 50.0                  # Typical maximum ROR (%)
+  distance_min: 0.0              # Minimum distance (% from spot)
+  distance_max: 15.0             # Maximum distance (% from spot)
+  iv_ratio_min: 1.0              # Minimum IV/RV ratio
+  iv_ratio_max: 2.0              # Maximum IV/RV ratio

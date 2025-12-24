@@ -1,0 +1,67 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+
+# Data files
+data/*.csv
+data/earnings_calendar.csv
+!data/SPY_sample_options.csv
+
+# Development/Progress markdown files
+IMPROVEMENT_PROMPT.md
+CRITICAL_ISSUES_PROGRESS.md
+CRITICAL_WORK_COMPLETE.md
+TESTING_COMPLETE.md
+TEST_SUMMARY.md
+README_TESTING.md
+MAKEFILE_USAGE.md
+CALENDAR_SPREADS_ADDED.md
+e2e.md
+how_to_use.md
+next_steps.md
+response.md
+
+# Temporary files
+*.tmp
+*.bak
+.env
+.env.local
