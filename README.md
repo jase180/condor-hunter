@@ -1,5 +1,8 @@
 # 🦅 Iron Condor & Calendar Spread Screener
 
+## Everything vibed with Claude with minimal edits so far to play around vibing ability and learn production Python
+
+
 **Production-grade options screening platform** for iron condor and calendar spread strategies with interactive GUI, advanced analytics, and portfolio risk management.
 
 [![Tests](https://img.shields.io/badge/tests-219%20passing-brightgreen)]()
